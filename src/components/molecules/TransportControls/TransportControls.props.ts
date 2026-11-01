@@ -4,6 +4,6 @@ export interface TransportControlsProps {
   onPause: () => void;
   onStop: () => void;
   onNext: () => void;
-  /** Przycisk "eject" przenosi do wyszukiwarki. */
+  /** The "eject" button jumps to the search field. */
   onEject: () => void;
 }

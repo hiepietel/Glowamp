@@ -6,7 +6,7 @@ function positionAt(state: Spotify.PlaybackState | null, receivedAt: number): nu
   return Math.min(state.duration, state.position + performance.now() - receivedAt);
 }
 
-/** Bieżąca pozycja utworu w ms, odświeżana kilka razy na sekundę podczas grania. */
+/** Current track position in ms, refreshed a few times per second while playing. */
 export function usePlaybackPosition(state: Spotify.PlaybackState | null, receivedAt: number, intervalMs = 250) {
   const [position, setPosition] = useState(0);
 

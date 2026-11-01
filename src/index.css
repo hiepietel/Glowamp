@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/* Kolory i czcionki klasycznego wyglądu (jedyny motyw w MVP). */
+/* Colors and fonts of the classic look (the only theme in the MVP). */
 @theme {
   --font-pixel: 'Silkscreen', monospace;
   --font-lcd: 'VT323', monospace;
@@ -29,7 +29,7 @@
   --color-seek-track: #0a0a14;
 }
 
-/* Wypukła i wklęsła ramka w stylu lat 90. (szerokość ustawia klasa border-*). */
+/* Raised and sunken 90s-style bevels (width comes from a border-* class). */
 @utility bevel-out {
   border-color: var(--color-frame-hi) var(--color-frame-lo) var(--color-frame-lo) var(--color-frame-hi);
 }

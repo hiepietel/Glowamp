@@ -1,4 +1,4 @@
-// Minimalne typy Spotify Web Playback SDK (https://sdk.scdn.co/spotify-player.js).
+// Minimal types for the Spotify Web Playback SDK (https://sdk.scdn.co/spotify-player.js).
 declare global {
   interface Window {
     onSpotifyWebPlaybackSDKReady?: () => void;

@@ -2,8 +2,8 @@ import type { PlaybackStatus } from '../../../types/spotify';
 
 export interface TimeDisplayProps {
   status: PlaybackStatus;
-  /** Gotowy tekst czasu, np. "01:23" albo "-02:10". */
+  /** Preformatted time, e.g. "01:23" or "-02:10". */
   time: string;
-  /** Kliknięcie przełącza czas upłynięty / pozostały. */
+  /** Clicking toggles elapsed / remaining time. */
   onToggleMode: () => void;
 }

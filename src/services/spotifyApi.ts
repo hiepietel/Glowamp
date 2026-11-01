@@ -36,7 +36,7 @@ async function api<T = unknown>(path: string, { method = 'GET', body, retry = tr
   try {
     json = text ? JSON.parse(text) : null;
   } catch {
-    /* odpowiedź nie-JSON */
+    /* non-JSON response */
   }
   if (!r.ok) {
     const message = (json as { error?: { message?: string } } | null)?.error?.message;
@@ -45,7 +45,7 @@ async function api<T = unknown>(path: string, { method = 'GET', body, retry = tr
   return json as T;
 }
 
-/* ---------- surowe odpowiedzi ---------- */
+/* ---------- raw responses ---------- */
 
 interface RawTrack {
   uri?: string;
@@ -78,7 +78,7 @@ function normalize(raw: (RawTrack | null | undefined)[]): Track[] {
 
 const fromItems = (page: Paging<RawItem>) => normalize((page.items ?? []).map((x) => x?.item ?? x?.track));
 
-/* ---------- dane ---------- */
+/* ---------- data ---------- */
 
 export const fetchMe = () => api<SpotifyUser>('/me');
 
@@ -106,7 +106,7 @@ export async function searchTracks(q: string): Promise<Track[]> {
   return normalize(r.tracks?.items ?? []);
 }
 
-/* ---------- sterowanie ---------- */
+/* ---------- playback control ---------- */
 
 export type PlayBody =
   | { context_uri: string; offset?: { uri: string } }

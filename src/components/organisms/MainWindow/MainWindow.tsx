@@ -10,7 +10,7 @@ import { Window } from '../../molecules/Window';
 import type { MainWindowProps } from './MainWindow.props';
 import { mainWindowStyles as s } from './MainWindow.styles';
 
-/** Główne okno: wyświetlacz, suwaki i przyciski. */
+/** Main window: display, sliders and buttons. */
 export function MainWindow(props: MainWindowProps) {
   return (
     <Window title="GLOWAMP">

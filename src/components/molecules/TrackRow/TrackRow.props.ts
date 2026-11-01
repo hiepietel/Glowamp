@@ -3,9 +3,9 @@ import type { Track } from '../../../types/spotify';
 export interface TrackRowProps {
   index: number;
   track: Track;
-  /** Zaznaczony (kliknięty / strzałki). */
+  /** Selected (clicked or picked with arrow keys). */
   selected: boolean;
-  /** Teraz grany. */
+  /** Currently playing. */
   current: boolean;
   onClick: () => void;
   onDoubleClick: () => void;

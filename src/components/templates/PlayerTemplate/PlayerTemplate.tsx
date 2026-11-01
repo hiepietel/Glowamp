@@ -1,7 +1,7 @@
 import type { PlayerTemplateProps } from './PlayerTemplate.props';
 import { playerTemplateStyles as s } from './PlayerTemplate.styles';
 
-/** Układ strony: okno główne nad oknem playlisty, wyśrodkowane. */
+/** Page layout: main window above the playlist window, centered. */
 export function PlayerTemplate({ main, playlist, overlay }: PlayerTemplateProps) {
   return (
     <main className={s.root}>

@@ -4,7 +4,7 @@ export interface TrackListProps {
   tracks: Track[];
   selected: number;
   currentUri: string | null;
-  /** Gdy ustawione, zamiast utworów pokazuje komunikat. */
+  /** When set, a message is shown instead of the tracks. */
   message: ListMessageKind | null;
   onSelect: (index: number) => void;
   onPlay: (index: number) => void;

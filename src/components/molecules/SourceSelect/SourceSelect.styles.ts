@@ -1,4 +1,4 @@
-// Select ma już swój wygląd z atomu; tu nic nie dokładamy.
+// The Select atom already has its look; nothing extra here.
 export const sourceSelectStyles = {
   root: '',
 } as const;

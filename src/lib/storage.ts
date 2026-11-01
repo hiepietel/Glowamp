@@ -1,4 +1,4 @@
-// localStorage może być niedostępny (tryb prywatny, zablokowane dane strony).
+// localStorage may be unavailable (private mode, blocked site data).
 export const storage = {
   get(key: string): string | null {
     try {
@@ -11,14 +11,14 @@ export const storage = {
     try {
       localStorage.setItem(key, value);
     } catch {
-      /* brak pamięci */
+      /* storage unavailable */
     }
   },
   remove(key: string): void {
     try {
       localStorage.removeItem(key);
     } catch {
-      /* brak pamięci */
+      /* storage unavailable */
     }
   },
 };

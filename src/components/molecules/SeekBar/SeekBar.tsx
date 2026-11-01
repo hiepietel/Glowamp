@@ -6,14 +6,14 @@ import { SEEK_STEPS, seekBarStyles } from './SeekBar.styles';
 export function SeekBar({ position, duration, onSeek }: SeekBarProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const latest = useRef({ duration, onSeek });
-  // Podczas przeciągania suwak pokazuje wartość użytkownika, a nie pozycję utworu.
+  // While dragging, the slider shows the user's value instead of the track position.
   const [dragValue, setDragValue] = useState<number | null>(null);
 
   useEffect(() => {
     latest.current = { duration, onSeek };
   }, [duration, onSeek]);
 
-  // React mapuje onChange na zdarzenie "input", a przewijać chcemy dopiero po puszczeniu ("change").
+  // React maps onChange to the "input" event; we only seek on release ("change").
   useEffect(() => {
     const el = inputRef.current;
     if (!el) return;

@@ -1,8 +1,8 @@
-# Zależności i build
+# Dependencies and build output
 node_modules/
 dist/
 
-# Lokalna konfiguracja
+# Local configuration
 .env.local
 *.local
 
@@ -11,7 +11,7 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
-# Edytory
+# Editors
 .vscode/
 .idea/
 *.swp

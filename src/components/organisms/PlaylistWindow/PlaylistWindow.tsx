@@ -6,7 +6,7 @@ import { TrackList } from '../TrackList';
 import type { PlaylistWindowProps } from './PlaylistWindow.props';
 import { playlistWindowStyles as s } from './PlaylistWindow.styles';
 
-/** Okno playlisty: wybór źródła, wyszukiwarka, lista utworów i konto. */
+/** Playlist window: source picker, search, track list and account. */
 export function PlaylistWindow(props: PlaylistWindowProps) {
   return (
     <Window title="GLOWAMP PLAYLIST">

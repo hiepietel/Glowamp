@@ -3,6 +3,6 @@ import type { ReactNode } from 'react';
 export interface PlayerTemplateProps {
   main: ReactNode;
   playlist: ReactNode;
-  /** Powiadomienie przyklejone do dołu ekranu. */
+  /** Notification pinned to the bottom of the screen. */
   overlay?: ReactNode;
 }

@@ -1,4 +1,4 @@
-// Logowanie Spotify: Authorization Code + PKCE (bez serwera).
+// Spotify login: Authorization Code + PKCE (no server needed).
 import { CLIENT_ID, REDIRECT_URI, SCOPES } from '../config';
 import { storage } from '../lib/storage';
 
@@ -82,7 +82,7 @@ async function exchangeCode(): Promise<void> {
   storage.remove(KEYS.state);
 }
 
-// Kod z adresu można wymienić tylko raz (StrictMode uruchamia efekty dwa razy).
+// The code from the URL can be exchanged only once (StrictMode runs effects twice).
 let callback: Promise<void> | null = null;
 export function handleCallback(): Promise<void> {
   callback ??= exchangeCode();

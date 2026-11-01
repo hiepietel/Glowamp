@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
 export interface ToggleButtonProps extends ComponentProps<'button'> {
-  /** Podświetlony (np. SHUFFLE włączony). */
+  /** Lit up (e.g. SHUFFLE is on). */
   active?: boolean;
   size?: 'md' | 'lg';
 }

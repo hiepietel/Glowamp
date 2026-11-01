@@ -15,7 +15,7 @@ export const playlistValue = (id: string) => `pl:${id}`;
 
 export type LibraryStatus = 'idle' | 'loading' | 'searching';
 
-/** Playlisty, aktualna lista utworów i wyszukiwanie. */
+/** Playlists, the current track list and search. */
 export function useLibrary(enabled: boolean, notify: (message: string) => void) {
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [tracks, setTracks] = useState<Track[]>([]);
@@ -26,7 +26,7 @@ export function useLibrary(enabled: boolean, notify: (message: string) => void) 
 
   const playlistsRef = useRef<Playlist[]>([]);
   const searchResults = useRef<Track[]>([]);
-  // Odrzuca odpowiedzi, które przyszły po nowszym żądaniu.
+  // Drops responses that arrive after a newer request.
   const requestId = useRef(0);
 
   const loadSource = useCallback(
@@ -51,7 +51,7 @@ export function useLibrary(enabled: boolean, notify: (message: string) => void) 
       } catch (e) {
         if (id !== requestId.current) return;
         setTracks([]);
-        // Cudzych playlist Spotify nie pokazuje (403) - to nie błąd, tylko komunikat w liście.
+        // Spotify hides tracks of other people's playlists (403); that is shown as a list message, not an error.
         if (!(playlist && e instanceof ApiError && e.status === 403)) {
           notify(`Nie udało się wczytać: ${errorMessage(e)}`);
         }

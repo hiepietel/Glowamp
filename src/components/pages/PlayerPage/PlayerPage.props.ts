@@ -1,2 +1,2 @@
-// Strona bierze cały stan z hooka useGlowamp, więc nie ma propsów.
+// The page takes all its state from the useGlowamp hook, so it has no props.
 export type PlayerPageProps = Record<string, never>;

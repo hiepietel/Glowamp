@@ -1,5 +1,5 @@
 export interface VisualizerProps {
-  /** Słupki skaczą tylko podczas grania. */
+  /** Bars move only while playing. */
   playing: boolean;
   className?: string;
 }

@@ -1,8 +1,8 @@
 export interface SeekBarProps {
-  /** Pozycja w ms. */
+  /** Position in ms. */
   position: number;
-  /** Długość utworu w ms (0 = nic nie gra). */
+  /** Track length in ms (0 = nothing playing). */
   duration: number;
-  /** Wywoływane po puszczeniu suwaka, z nową pozycją w ms. */
+  /** Called when the slider is released, with the new position in ms. */
   onSeek: (positionMs: number) => void;
 }

@@ -5,7 +5,7 @@ const SDK_URL = 'https://sdk.scdn.co/spotify-player.js';
 
 export interface PlayerSnapshot {
   state: Spotify.PlaybackState | null;
-  /** performance.now() w chwili otrzymania stanu, do liczenia pozycji. */
+  /** performance.now() when the state arrived, used to compute the position. */
   receivedAt: number;
 }
 
@@ -16,7 +16,7 @@ function loadSdk(): void {
   document.head.appendChild(script);
 }
 
-/** Łączy się z Spotify Web Playback SDK, gdy `enabled` jest true. */
+/** Connects to the Spotify Web Playback SDK while `enabled` is true. */
 export function useSpotifyPlayer(enabled: boolean, volume: number, notify: (message: string) => void) {
   const playerRef = useRef<Spotify.Player | null>(null);
   const volumeRef = useRef(volume);
@@ -77,7 +77,7 @@ export function useSpotifyPlayer(enabled: boolean, volume: number, notify: (mess
     };
   }, [enabled]);
 
-  // Przeglądarki wymagają gestu użytkownika, zanim pozwolą grać dźwięk.
+  // Browsers require a user gesture before they allow audio playback.
   const activate = useCallback(() => {
     if (activatedRef.current || !playerRef.current) return;
     void playerRef.current.activateElement();

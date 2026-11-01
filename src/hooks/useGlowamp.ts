@@ -45,7 +45,7 @@ function listMessage(
   return null;
 }
 
-/** Cały stan odtwarzacza zebrany w propsy dla okien. */
+/** The whole player state, mapped to props for the windows. */
 export function useGlowamp(): {
   mainWindow: MainWindowProps;
   playlistWindow: PlaylistWindowProps;
@@ -70,7 +70,7 @@ export function useGlowamp(): {
   const position = usePlaybackPosition(state, receivedAt);
   const playing = !!state && !state.paused;
 
-  /* ---------- sterowanie ---------- */
+  /* ---------- playback control ---------- */
 
   const requireDevice = useCallback((): string | null => {
     activate();
@@ -159,7 +159,7 @@ export function useGlowamp(): {
     l: focusSearch,
   });
 
-  /* ---------- widok ---------- */
+  /* ---------- view ---------- */
 
   const status: PlaybackStatus = !state || !currentTrack ? 'stopped' : playing ? 'playing' : 'paused';
 

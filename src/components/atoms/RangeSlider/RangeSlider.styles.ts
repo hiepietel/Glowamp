@@ -1,5 +1,5 @@
-// Tailwind nie ma wariantów dla części suwaka, więc stylujemy pseudo-elementy przez [&::...].
-// Klasy muszą być pełnymi napisami (Tailwind ich nie składa dynamicznie).
+// Tailwind has no variants for slider parts, so the pseudo-elements are styled via [&::...].
+// Classes must be complete strings (Tailwind can't see classes built at runtime).
 const base =
   'm-0 h-4 w-full cursor-pointer appearance-none bg-transparent ' +
   '[&::-webkit-slider-runnable-track]:border [&::-webkit-slider-runnable-track]:border-black ' +

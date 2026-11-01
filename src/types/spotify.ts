@@ -1,4 +1,4 @@
-/** Utwór w uproszczonej postaci używanej przez listę. */
+/** A track in the simplified shape used by the list. */
 export interface Track {
   uri: string;
   name: string;
@@ -30,7 +30,7 @@ export type PlaybackStatus = 'stopped' | 'playing' | 'paused';
 
 export type AuthStatus = 'unconfigured' | 'checking' | 'logged-out' | 'denied' | 'ready';
 
-/** Co pokazać w liście zamiast utworów. */
+/** What to show in the list instead of tracks. */
 export type ListMessageKind =
   | 'setup'
   | 'login'

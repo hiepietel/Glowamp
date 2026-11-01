@@ -4,7 +4,7 @@ const STEP_MS = 180;
 const WINDOW = 120;
 const SEPARATOR = '   ***   ';
 
-/** Przewijany tekst jak na wyświetlaczu klasycznego odtwarzacza. */
+/** Scrolling text like on a classic player's display. */
 export function useMarquee(text: string): string {
   const [display, setDisplay] = useState(text);
 

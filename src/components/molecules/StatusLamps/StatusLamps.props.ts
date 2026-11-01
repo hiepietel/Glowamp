@@ -1,6 +1,6 @@
 export interface StatusLampsProps {
-  /** Lampka STEREO świeci podczas grania. */
+  /** The STEREO lamp is lit while playing. */
   stereo: boolean;
-  /** Lampka ONLINE świeci, gdy odtwarzacz jest połączony ze Spotify. */
+  /** The ONLINE lamp is lit while the player is connected to Spotify. */
   online: boolean;
 }

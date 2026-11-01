@@ -2,7 +2,7 @@ export const visualizerStyles = {
   root: 'block h-9 w-38 [image-rendering:pixelated] max-[520px]:w-full',
 } as const;
 
-/** Kolory rysowane na canvasie (canvas nie używa klas). */
+/** Colors drawn on the canvas (a canvas can't use classes). */
 export const visualizerColors = {
   low: '#118a11',
   mid: '#d8d81e',

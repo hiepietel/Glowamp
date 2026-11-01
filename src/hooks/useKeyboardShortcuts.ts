@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 type Handlers = Record<string, () => void>;
 
-/** Skróty jednoklawiszowe (pomijane, gdy kursor jest w polu tekstowym). */
+/** Single-key shortcuts (ignored while typing in a form field). */
 export function useKeyboardShortcuts(handlers: Handlers): void {
   const ref = useRef(handlers);
 

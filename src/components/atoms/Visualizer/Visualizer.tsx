@@ -6,8 +6,8 @@ import { VISUALIZER_SIZE, visualizerColors, visualizerStyles } from './Visualize
 const { width: W, height: H, bars: BARS } = VISUALIZER_SIZE;
 
 /**
- * Analizator widma jest tylko ozdobą: Spotify nie udostępnia surowego dźwięku,
- * więc słupki są animowane sztucznie.
+ * The spectrum analyzer is decorative only: Spotify doesn't expose raw audio,
+ * so the bars are animated artificially.
  */
 export function Visualizer({ playing, className }: VisualizerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

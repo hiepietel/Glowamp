@@ -22,7 +22,7 @@ export function TrackList({ tracks, selected, currentUri, message, onSelect, onP
     onSelect(e.key === 'ArrowDown' ? Math.min(tracks.length - 1, selected + 1) : Math.max(0, selected - 1));
   };
 
-  // Na ekranach dotykowych dwuklik jest niewygodny, więc jedno dotknięcie od razu gra.
+  // Double-tap is awkward on touch screens, so a single tap plays right away.
   const onRowClick = (index: number) => {
     if (window.matchMedia('(pointer: coarse)').matches) onPlay(index);
     else onSelect(index);

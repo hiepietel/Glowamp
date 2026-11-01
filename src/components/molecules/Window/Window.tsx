@@ -3,7 +3,7 @@ import { TitleBar } from '../TitleBar';
 import type { WindowProps } from './Window.props';
 import { windowStyles } from './Window.styles';
 
-/** Ramka okna z paskiem tytułu. */
+/** Window frame with a title bar. */
 export function Window({ title, children, className }: WindowProps) {
   return (
     <section aria-label={title} className={cn(windowStyles.root, className)}>
