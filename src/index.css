@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+/* Kolory i czcionki klasycznego wyglądu (jedyny motyw w MVP). */
+@theme {
+  --font-pixel: 'Silkscreen', monospace;
+  --font-lcd: 'VT323', monospace;
+
+  --color-page: #0c0c16;
+  --color-page-glow: #1d1d33;
+  --color-win-top: #3a3a54;
+  --color-win-bottom: #26263a;
+  --color-frame-hi: #5a5a76;
+  --color-frame-lo: #10101c;
+  --color-grip: #c8b45a;
+  --color-title: #ececf4;
+  --color-lcd-bg: #000;
+  --color-lcd: #1ee81e;
+  --color-lcd-dim: #0d4a0d;
+  --color-cur: #fff;
+  --color-sel: #0a2a8a;
+  --color-muted: #8a8aa6;
+  --color-btn-top: #d4d4e0;
+  --color-btn-bottom: #8b8ba2;
+  --color-btn-hi: #f2f2f8;
+  --color-btn-lo: #3a3a48;
+  --color-btn-icon: #1a1a2a;
+  --color-toggle-bg: #181826;
+  --color-toggle-on: #1ee81e;
+  --color-seek-track: #0a0a14;
+}
+
+/* Wypukła i wklęsła ramka w stylu lat 90. (szerokość ustawia klasa border-*). */
+@utility bevel-out {
+  border-color: var(--color-frame-hi) var(--color-frame-lo) var(--color-frame-lo) var(--color-frame-hi);
+}
+
+@utility bevel-in {
+  border-color: var(--color-frame-lo) var(--color-frame-hi) var(--color-frame-hi) var(--color-frame-lo);
+}
+
+@utility bevel-btn {
+  border-color: var(--color-btn-hi) var(--color-btn-lo) var(--color-btn-lo) var(--color-btn-hi);
+}
+
+@utility bevel-btn-pressed {
+  border-color: var(--color-btn-lo) var(--color-btn-hi) var(--color-btn-hi) var(--color-btn-lo);
+}
+
+@utility glow-lcd {
+  text-shadow: 0 0 6px color-mix(in srgb, var(--color-lcd) 45%, transparent);
+}
+
+@utility glow-on {
+  text-shadow: 0 0 4px color-mix(in srgb, var(--color-toggle-on) 60%, transparent);
+}
+
+@layer base {
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at top, var(--color-page-glow) 0%, var(--color-page) 70%) var(--color-page);
+    color: var(--color-title);
+    font-family: var(--font-pixel);
+  }
+}
