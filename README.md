@@ -1,53 +1,68 @@
 # Glowamp
 
-Odtwarzacz w przeglądarce w stylu klasycznych odtwarzaczy MP3 z lat 90., który gra muzykę z Twojego konta Spotify.
+A browser player styled after classic 90s MP3 players that plays music from your Spotify account.
 
 React + TypeScript + Vite + Tailwind CSS.
 
-## Wymagania
+Live: https://hiepietel.github.io/Glowamp/
 
-- Konto **Spotify Premium** (Spotify nie pozwala odtwarzać muzyki w zewnętrznych aplikacjach na darmowym koncie).
-- Node.js 20+.
+## Requirements
 
-## Konfiguracja (jednorazowo)
+- A **Spotify Premium** account (Spotify doesn't allow playback in third-party apps on free accounts).
+- Node.js 20.19+ (CI uses 24).
 
-1. Wejdź na https://developer.spotify.com/dashboard i kliknij **Create app**.
-2. W polu **Redirect URI** wpisz dokładnie: `http://127.0.0.1:8888/`
-   (Spotify nie akceptuje `localhost`, tylko `127.0.0.1`).
-3. Zaznacz **Web API** i **Web Playback SDK**, zapisz.
-4. Skopiuj plik `.env.example` jako `.env.local` i wklej **Client ID** do `VITE_SPOTIFY_CLIENT_ID`.
-5. Jeśli chcesz, żeby ktoś inny też mógł się zalogować, dodaj jego e-mail w **User Management**
-   (w trybie deweloperskim Spotify pozwala na kilku testowych użytkowników).
+## Setup (one time)
 
-## Uruchomienie
+1. Go to https://developer.spotify.com/dashboard and click **Create app**.
+2. Add these **Redirect URIs** exactly as written:
+   - `http://127.0.0.1:8888/` for local development (Spotify rejects `localhost`, only `127.0.0.1` works),
+   - `https://hiepietel.github.io/Glowamp/` for GitHub Pages.
+3. Tick **Web API** and **Web Playback SDK**, then save.
+4. Copy `.env.example` to `.env.local` and paste the **Client ID** into `VITE_SPOTIFY_CLIENT_ID`.
+5. While the app is in development mode, only accounts listed under **User Management** can log in.
+   Add the email of anyone else who should be able to use it.
 
-Kliknij dwukrotnie `start.bat` albo:
+## Running locally
 
 ```
 npm install
 npm run dev
 ```
 
-i otwórz http://127.0.0.1:8888/
+and open http://127.0.0.1:8888/
 
-| Polecenie | Co robi |
+| Command | What it does |
 |---|---|
-| `npm run dev` | serwer deweloperski |
-| `npm run build` | sprawdzenie typów + build do `dist/` |
-| `npm run typecheck` | tylko sprawdzenie typów |
-| `npm run preview` | podgląd buildu |
+| `npm run dev` | dev server |
+| `npm run build` | type check + production build into `dist/` |
+| `npm run typecheck` | type check only |
+| `npm run preview` | serve the production build |
 
-## Sterowanie
+## Deploying to GitHub Pages
 
-| Klawisz | Akcja |
+Every push to `main` builds the app and publishes it via [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+One-time setup in the GitHub repository:
+
+1. **Settings → Pages → Source:** choose **GitHub Actions**.
+2. **Settings → Secrets and variables → Actions → Variables → New repository variable:**
+   name `VITE_SPOTIFY_CLIENT_ID`, value = your Client ID.
+   The Client ID ends up in the page's JavaScript anyway (normal for PKCE login without a server), so a variable is enough.
+3. Make sure `https://hiepietel.github.io/Glowamp/` is in the Spotify app's Redirect URIs.
+
+The site lives under `/Glowamp/`, which is set as `base` in [vite.config.ts](vite.config.ts) for production builds.
+If the repository is renamed, update it there too.
+
+## Controls
+
+| Key | Action |
 |---|---|
-| Z / X / C / V / B | poprzedni / graj / pauza / stop / następny |
-| S / R | losowo / powtarzanie |
-| L | wyszukiwanie |
-| Dwuklik na utworze, Enter | odtwórz |
-| Klik na czasie | czas pozostały |
+| Z / X / C / V / B | previous / play / pause / stop / next |
+| S / R | shuffle / repeat |
+| L | search |
+| Double-click a track, Enter | play |
+| Click the time | toggle remaining time |
 
-## Struktura (atomic design)
+## Structure (atomic design)
 
 ```
 src/
@@ -60,26 +75,27 @@ src/
     organisms/   MainWindow, PlaylistWindow, TrackList
     templates/   PlayerTemplate
     pages/       PlayerPage
-  hooks/         useGlowamp (spina całość), useAuth, useSpotifyPlayer, useLibrary, ...
-  services/      auth.ts (logowanie PKCE), spotifyApi.ts (Web API)
-  types/         typy aplikacji i Spotify Web Playback SDK
-  index.css      motyw Tailwind (kolory, czcionki, ramki)
+  hooks/         useGlowamp (ties everything together), useAuth, useSpotifyPlayer, useLibrary, ...
+  services/      auth.ts (PKCE login), spotifyApi.ts (Web API)
+  types/         app types and Spotify Web Playback SDK types
+  index.css      Tailwind theme (colors, fonts, bevels)
 ```
 
-Każdy komponent ma własny folder:
+Every component has its own folder:
 
 ```
 Button/
-  Button.tsx         komponent
-  Button.props.ts    typy propsów
-  Button.styles.ts   klasy Tailwind
-  index.ts           eksport
+  Button.tsx         component
+  Button.props.ts    prop types
+  Button.styles.ts   Tailwind classes
+  index.ts           exports
 ```
 
-Klasy w `*.styles.ts` muszą być pełnymi napisami — Tailwind nie widzi klas sklejanych w locie.
+Classes in `*.styles.ts` must be complete strings. Tailwind can't detect class names that are built at runtime.
 
-## Ograniczenia
+## Limitations
 
-- Analizator widma jest tylko ozdobą: Spotify nie udostępnia surowego dźwięku, więc nie da się zrobić prawdziwej wizualizacji ani korektora.
-- Spotify pokazuje listę utworów tylko dla Twoich własnych playlist. Obserwowane playlisty można odtworzyć w całości przyciskiem ▶.
-- Wyszukiwarka zwraca do 10 wyników (limit Spotify w trybie deweloperskim).
+- The spectrum analyzer is decorative only. Spotify doesn't expose raw audio, so a real visualizer or equalizer isn't possible.
+- Spotify returns track lists only for your own playlists. Followed playlists can still be played as a whole with ▶.
+- Search returns up to 10 results (Spotify's limit in development mode).
+- The interface text is in Polish.
